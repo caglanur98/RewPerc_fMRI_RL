@@ -1,0 +1,241 @@
+%% Import data from text file
+
+filename= '/Users/caglademirkan/Documents/MATLAB/reduced_behavioral_data/sub008_1204_reduced.csv'
+
+
+
+%% Set up the Import Options and import the data
+opts = delimitedTextImportOptions("NumVariables", 155);
+
+% Specify range and delimiter
+opts.DataLines = [2, Inf];
+opts.Delimiter = ";";
+
+% Specify column names and types
+opts.VariableNames = ["conditionBlock", "instImg", "instText", "blockImg", "stim1", "stim2", "stim3", "stim1prob", "stim2prob", "stim3prob", "normProb1", "normProb2", "normProb3", "corrAns1", "corrAns2", "corrAns3", "oldAlien", "oldAlienIndex", "newAlien", "newAlienIndex", "sentence", "conditionsthisRepN", "conditionsthisTrialN", "conditionsthisN", "conditionsthisIndex", "trialsthisRepN", "trialsthisTrialN", "trialsthisN", "trialsthisIndex", "image_3started", "image_3stopped", "key_respkeys", "key_resprt", "key_respstarted", "key_respstopped", "key_resp_nextkeys", "key_resp_nextrt", "key_resp_nextstarted", "key_resp_nextstopped", "ConditionStart1fmri", "image_2started", "image_2stopped", "block_Inststarted", "block_Inststopped", "space_for_nextkeys", "space_for_nextrt", "space_for_nextstarted", "space_for_nextstopped", "BlockStart1fmri", "textstarted", "textstopped", "jitter1_durationfmri", "jitter1_startfmri", "jitter1_stopfmri", "text_3started", "text_3stopped", "TrialStartfmri", "blockImagestarted", "blockImagestopped", "stimLeftstarted", "stimLeftstopped", "stimCenterstarted", "stimCenterstopped", "stimRightstarted", "stimRightstopped", "progressFeedbackstarted", "progressFeedbackstopped", "progressFeedback_textstarted", "progressFeedback_textstopped", "key_responsekeys", "key_responsestarted", "key_responsestopped", "reward_Tot", "current_condition", "correct_answer", "inst_key_pressed", "Respondfmri", "blockImage_3started", "blockImage_3stopped", "stimLeft_3started", "stimLeft_3stopped", "stimCenter_3started", "stimCenter_3stopped", "stimRight_3started", "stimRight_3stopped", "partChoicestarted", "partChoicestopped", "particYourChoicestarted", "particYourChoicestopped", "progresssFeedback_2started", "progresssFeedback_2stopped", "progressFeedback_text_2started", "progressFeedback_text_2stopped", "bgstarted", "bgstopped", "image_leftstarted", "image_leftstopped", "image_rightstarted", "image_rightstopped", "image_centerstarted", "image_centerstopped", "text_6started", "text_6stopped", "jitter2_durationfmri", "jitter2_startfmri", "jitter2_stopfmri", "text_4started", "text_4stopped", "feedbackStartfmri", "feedbackStopfmri", "blockImage_2started", "blockImage_2stopped", "stimLeft_2started", "stimLeft_2stopped", "stimCenter_2started", "stimCenter_2stopped", "stimRight_2started", "stimRight_2stopped", "partChoice_2started", "partChoice_2stopped", "particYourChoice_2started", "particYourChoice_2stopped", "pointFeedbackstarted", "pointFeedbackstopped", "pointFeedback_textstarted", "pointFeedback_textstopped", "progressFeedback_3started", "progressFeedback_3stopped", "progressFeedback_text_3started", "progressFeedback_text_3stopped", "participant_block_accuracy", "BlockfeedbackStartfmri", "block_feedbackMsgstarted", "block_feedbackMsgstopped", "BlockfeedbackStopfmri", "key_responsert", "BlockStart2fmri", "BlockStart3fmri", "BlockStart4fmri", "participant_condition_accuracy", "condition_feedbackAccuracystarted", "condition_feedbackAccuracystopped", "ConditionStart0fmri", "participant_block_bonus", "participant_condition_bonus", "endExperimentfmri", "text_5started", "text_5stopped", "participant", "session", "date", "expName", "psychopyVersion", "frameRate", "VarName155"];
+opts.VariableTypes = ["double", "categorical", "categorical", "categorical", "categorical", "categorical", "categorical", "double", "double", "double", "double", "double", "double", "categorical", "categorical", "categorical", "categorical", "double", "categorical", "double", "categorical", "double", "double", "double", "double", "double", "double", "double", "double", "double", "double", "double", "double", "double", "string", "double", "double", "double", "string", "double", "double", "string", "double", "categorical", "categorical", "double", "double", "categorical", "double", "categorical", "categorical", "double", "double", "double", "double", "categorical", "double", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "double", "categorical", "double", "double", "double", "double", "double", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "categorical", "categorical", "categorical", "categorical", "categorical", "categorical", "categorical", "categorical", "categorical", "categorical", "double", "double", "double", "double", "categorical", "double", "double", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "categorical", "double", "double", "double", "categorical", "double", "double", "double", "double", "double", "double", "double", "string", "double", "double", "double", "double", "double", "double", "categorical", "double", "categorical", "categorical", "categorical", "double", "string"];
+
+% Specify file level properties
+opts.ExtraColumnsRule = "ignore";
+opts.EmptyLineRule = "read";
+
+% Specify variable properties
+opts = setvaropts(opts, ["key_respstopped", "key_resp_nextstopped", "image_2stopped", "condition_feedbackAccuracystopped", "VarName155"], "WhitespaceRule", "preserve");
+opts = setvaropts(opts, ["instImg", "instText", "blockImg", "stim1", "stim2", "stim3", "corrAns1", "corrAns2", "corrAns3", "oldAlien", "newAlien", "sentence", "key_respstopped", "key_resp_nextstopped", "image_2stopped", "block_Inststopped", "space_for_nextkeys", "space_for_nextstopped", "textstarted", "textstopped", "text_3stopped", "blockImagestopped", "stimLeftstopped", "stimCenterstopped", "stimRightstopped", "progressFeedbackstopped", "progressFeedback_textstopped", "key_responsestopped", "blockImage_3stopped", "stimLeft_3stopped", "stimCenter_3stopped", "stimRight_3stopped", "partChoicestopped", "particYourChoicestopped", "progresssFeedback_2stopped", "progressFeedback_text_2stopped", "bgstarted", "bgstopped", "image_leftstarted", "image_leftstopped", "image_rightstarted", "image_rightstopped", "image_centerstarted", "image_centerstopped", "text_6started", "text_6stopped", "text_4stopped", "blockImage_2stopped", "stimLeft_2stopped", "stimCenter_2stopped", "stimRight_2stopped", "partChoice_2stopped", "particYourChoice_2stopped", "pointFeedbackstopped", "pointFeedback_textstopped", "progressFeedback_3stopped", "progressFeedback_text_3stopped", "block_feedbackMsgstopped", "condition_feedbackAccuracystopped", "participant", "date", "expName", "psychopyVersion", "VarName155"], "EmptyFieldRule", "auto");
+opts = setvaropts(opts, ["image_3stopped", "text_5stopped"], "TrimNonNumeric", true);
+opts = setvaropts(opts, ["image_3stopped", "text_5stopped"], "ThousandsSeparator", ",");
+
+% Import the data
+beh_log = readtable(filename, opts);
+
+%% Clear temporary variables
+clear opts
+
+%% Extract useful columns
+
+fmri_block_onsets = [];
+for i=1:4 % for each of the 4 repetitions of a condition
+    eval(strcat('fmri_block_onsets = [fmri_block_onsets; find(~isnan(beh_log.BlockStart',num2str(i),'fmri))];'));
+end
+fmri_block_onsets = sort(fmri_block_onsets);
+
+all_reaction_times = [];
+all_response_accuracies = [];
+
+Block_rts = cell(8, 1);
+Block_accuracies = cell(8, 1);
+
+for i=1:length(fmri_block_onsets)
+
+    if i < length(fmri_block_onsets)
+
+        scene_onsets = beh_log(fmri_block_onsets(i):fmri_block_onsets(i+1)-1,:).TrialStartfmri;
+        response_onsets = beh_log(fmri_block_onsets(i):fmri_block_onsets(i+1)-1,:).Respondfmri;
+        response_accuracy = beh_log(fmri_block_onsets(i):fmri_block_onsets(i+1)-1,:).correct_answer;
+
+    else
+
+        scene_onsets = beh_log(fmri_block_onsets(i):end-1,:).TrialStartfmri;
+        response_onsets = beh_log(fmri_block_onsets(i):end-1,:).Respondfmri;
+        response_accuracy = beh_log(fmri_block_onsets(i):end-1,:).correct_answer;
+
+    end
+
+
+    if length(isnan(scene_onsets))>0
+        response_accuracy(find(isnan(scene_onsets))) = [];
+        response_onsets(find(isnan(scene_onsets))) = [];
+        scene_onsets(find(isnan(scene_onsets))) = [];
+    end
+
+     % Calculate Reaction Times (RT)
+    reaction_times = response_onsets - scene_onsets;
+
+    % Store all RTs and response accuracies for this block
+    all_reaction_times = [all_reaction_times; reaction_times(find(response_accuracy >= 0))];
+    all_response_accuracies = [all_response_accuracies; response_accuracy(find(response_accuracy >= 0))];
+
+    Block_rts{i} = reaction_times(response_accuracy >= 0);
+    Block_accuracies{i} = response_accuracy(response_accuracy >= 0);
+
+
+    names = {'scene_onsets', 'response_onsets', 'response_accuracy', 'reaction_times'};
+    onsets = {scene_onsets(find(response_accuracy >= 0)), response_onsets(find(response_accuracy >= 0)), response_accuracy(find(response_accuracy >= 0)), reaction_times(find(response_accuracy >= 0))};
+
+    filename = strcat('sub008_reduced_block', num2str(i), 'conditions.mat');
+    save(filename, 'names', 'onsets');
+
+end
+
+
+
+
+%% Seperate data by blocks
+
+Block_mean_rts = zeros(8, 1);
+Block_mean_accuracies = zeros(8, 1);
+Block_stds= zeros(8, 1);
+
+
+for i = 1:8
+    block_filename = strcat('sub008_reduced_block', num2str(i), 'conditions.mat');
+    load(block_filename, 'onsets');
+    Block_mean_rts(i) = mean(onsets{4}); 
+    Block_stds(i) = std(onsets{4});
+    Block_mean_accuracies(i) = mean(onsets{3});
+end
+
+
+
+block1_mean_rt = Block_mean_rts(1);
+block2_mean_rt = Block_mean_rts(2);
+block3_mean_rt = Block_mean_rts(3);
+block4_mean_rt = Block_mean_rts(4);
+block5_mean_rt = Block_mean_rts(5);
+block6_mean_rt = Block_mean_rts(6);
+block7_mean_rt = Block_mean_rts(7);
+block8_mean_rt = Block_mean_rts(8);
+
+block1_std = Block_stds(1);
+block2_std = Block_stds(2);
+block3_std = Block_stds(3);
+block4_std = Block_stds(4);
+block5_std = Block_stds(5);
+block6_std = Block_stds(6);
+block7_std = Block_stds(7);
+block8_std = Block_stds(8);
+
+block1_mean_accuracy = Block_mean_accuracies(1);
+block2_mean_accuracy = Block_mean_accuracies(2);
+block3_mean_accuracy = Block_mean_accuracies(3);
+block4_mean_accuracy = Block_mean_accuracies(4);
+block5_mean_accuracy = Block_mean_accuracies(5);
+block6_mean_accuracy = Block_mean_accuracies(6);
+block7_mean_accuracy = Block_mean_accuracies(7);
+block8_mean_accuracy = Block_mean_accuracies(8);
+
+
+
+%% Separate data by conditions
+
+Reward_rts = [];
+Reward_accuracies = [];
+Perception_rts = [];
+Perception_accuracies = [];
+
+for i=1:4
+    block_filename = strcat('sub008_reduced_block', num2str(i), 'conditions.mat');
+    load(block_filename, 'onsets');
+    Perception_rts = [Perception_rts; onsets{4}];
+    Perception_accuracies = [Perception_accuracies; onsets{3}];
+    
+end
+
+for i=5:8
+    block_filename = strcat('sub008_reduced_block', num2str(i), 'conditions.mat');
+    load(block_filename, 'onsets');
+    Reward_rts = [Reward_rts; onsets{4}];
+    Reward_accuracies = [Reward_accuracies; onsets{3}];
+end
+
+
+Reward_mean_rt = mean(Reward_rts);
+Reward_std = std(Reward_rts);
+Reward_mean_accuracy = mean(Reward_accuracies);
+ 
+Perception_mean_rt = mean(Perception_rts);
+Perception_std= std(Perception_rts);
+Perception_mean_accuracy = mean(Perception_accuracies);
+
+
+% Save overall results
+
+subject_id = 'sub008'; % Replace 'sub001' with the actual subject ID
+save_filename = sprintf('%s_Reduced_BehavioralResults.mat', subject_id);
+save(save_filename, 'all_reaction_times', 'all_response_accuracies', 'Block_rts', 'Block_accuracies', ...
+                    'Block_mean_rts', 'Block_mean_accuracies', 'Block_stds',...
+                    'Reward_rts', 'Reward_accuracies', 'Reward_mean_rt', 'Reward_std', 'Reward_mean_accuracy', ...
+                    'Perception_rts', 'Perception_accuracies', 'Perception_mean_rt', 'Perception_std', 'Perception_mean_accuracy' );
+
+
+
+% Display results
+fprintf('Reward - Mean RT: %.2f seconds, Std RT: %.2f seconds, Accuracy: %.2f%%\n', Reward_mean_rt, Reward_std, Reward_mean_accuracy * 100);
+fprintf('Perception - Mean RT: %.2f seconds, Std RT: %.2f seconds, Accuracy: %.2f%%\n', Perception_mean_rt, Perception_std, Perception_mean_accuracy * 100);
+
+
+%% Plot results
+
+figure;
+
+% Subplot 1: Reaction Times for Blocks 1-4
+subplot(2,2,1);
+bar([block1_mean_rt, block2_mean_rt, block3_mean_rt, block4_mean_rt]);
+hold on;
+errorbar(1:4, [block1_mean_rt, block2_mean_rt, block3_mean_rt, block4_mean_rt],...
+         [block1_std, block2_std, block3_std, block4_std], 'k.', 'LineStyle', 'none');
+hold off;
+title('Perception');
+xlabel('Block Number');
+ylabel('Mean Reaction Time (s)');
+xticks(1:4);
+xticklabels({'1', '2', '3', '4'});
+
+% Subplot 2: Reaction Times for Blocks 5-8
+subplot(2,2,2);
+bar([block5_mean_rt, block6_mean_rt, block7_mean_rt, block8_mean_rt]);
+hold on;
+errorbar(1:4, [block5_mean_rt, block6_mean_rt, block7_mean_rt, block8_mean_rt],...
+         [block5_std, block6_std, block7_std, block8_std], 'k.', 'LineStyle', 'none');
+hold off;
+title('Reward');
+xlabel('Block Number');
+ylabel('Mean Reaction Time (s)');
+xticks(1:4);
+xticklabels({'5', '6', '7', '8'});
+
+% Subplot 3: Accuracies for Blocks 1-4
+subplot(2,2,3);
+bar([block1_mean_accuracy, block2_mean_accuracy, block3_mean_accuracy, block4_mean_accuracy] * 100);
+title('Perception');
+xlabel('Block Number');
+ylabel('Accuracy (%)');
+xticks(1:4);
+xticklabels({'1', '2', '3', '4'});
+
+% Subplot 4: Accuracies for Blocks 5-8
+subplot(2,2,4);
+bar([block5_mean_accuracy, block6_mean_accuracy, block7_mean_accuracy, block8_mean_accuracy] * 100);
+title('Reward');
+xlabel('Block Number');
+ylabel('Accuracy (%)');
+xticks(1:4);
+xticklabels({'5', '6', '7', '8'});
+
+
+% The title of the figure and save the figure
+ax = axes('Units', 'Normal', 'Position', [0.075 0.075 0.85 0.85], 'Visible', 'off'); % Get the position of the current figure's axes for placing the title
+set(get(ax,'Title'),'Visible','on')
+title('Subject 8');
+saveas(gcf, 'sub008_reduced_summary.png');  
+
